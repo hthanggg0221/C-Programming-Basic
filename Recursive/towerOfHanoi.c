@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <math.h>
 
 void move(int number, int tower1, int tower2, int tower3)
 {
@@ -17,7 +16,7 @@ int main()
 {
     int n, a, b, c;
     scanf("%d %d %d %d", &n, &a, &b, &c);
-    int count = pow(2, n) - 1;
+    int count = (1 << n) - 1;
     printf("%d\n", count);
     move(n, a, b, c);
     return 0;
