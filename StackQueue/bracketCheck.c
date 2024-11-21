@@ -78,9 +78,20 @@ int check(char *s)
     return stackEmpty();
 }
 
+void freeStack()
+{
+    while(!stackEmpty())
+    {
+        Node *p = top;
+        top = top->next;
+        free(p);
+    }
+}
+
 int main()
 {
     scanf("%s", s);
     printf("%d", check(s));
+    freeStack();
     return 0;
 }
