@@ -43,6 +43,17 @@ void push(int x)
     top = p;
 }
 
+void freeAll()
+{
+    while(!stackEmpty())
+    {
+        Node *p = top;
+        top = top->next;
+        free(p);
+    }
+    return;
+}
+
 int main()
 {
     char cmd[10];
@@ -68,5 +79,6 @@ int main()
             }
         }
     }
+    freeAll();
     return 0;
 }
