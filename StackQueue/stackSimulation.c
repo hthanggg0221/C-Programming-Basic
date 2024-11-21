@@ -51,7 +51,6 @@ void freeAll()
         top = top->next;
         free(p);
     }
-    return;
 }
 
 int main()
