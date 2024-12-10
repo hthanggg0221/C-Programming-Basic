@@ -39,7 +39,7 @@ int emptyList()
 void displayNode(Node *p)
 {
     contact temp = p->el;
-    printf("%s %s %.2f\n", temp.msv, temp.ten, temp.dtb);
+    printf("%s %s %g\n", temp.msv, temp.ten, temp.dtb);
 }
 
 Node *makeNode(contact ct)
@@ -147,7 +147,7 @@ int main()
         else if(strcmp(cmd, "Print") == 0)
             traversalList();
         else if(strcmp(cmd, "Max") == 0)
-            printf("%.2f\n", maxOfGPA());
+            printf("%g\n", maxOfGPA());
         else if(strcmp(cmd, "Avg") == 0)
             printf("%.2f\n", averageOfGPA());
         else if(strcmp(cmd, "Delete") == 0)
