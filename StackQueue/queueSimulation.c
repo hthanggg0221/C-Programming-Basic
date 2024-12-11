@@ -5,29 +5,35 @@
 typedef struct Node
 {
     int value;
-    struct Node* next;
+    struct Node *next;
 } Node;
 
-Node* head;
-Node* tail;
+Node *head;
+Node *tail;
 
-Node* makeNode(int v)
+void initQueue()
+{
+    head = NULL;
+    tail = NULL;
+}
+
+int emptyQueue()
+{
+    return head == NULL && tail == NULL;
+}
+
+Node *makeNode(int val)
 {
     Node *p = (Node*)malloc(sizeof(Node));
-    p->value = v;
+    p->value = val;
     p->next = NULL;
     return p;
 }
 
-int queueEmpty()
+void push(int val)
 {
-    return (head == NULL && tail == NULL);
-}
-    
-void push(int v)
-{
-    Node* p = makeNode(v);
-    if(queueEmpty())
+    Node *p = makeNode(val);
+    if (emptyQueue())
     {
         head = p;
         tail = p;
@@ -39,32 +45,31 @@ void push(int v)
 
 int pop()
 {
-    Node* tmp = head;
-    int v = head->value;
+    Node *p = head;
+    int x = head->value;    
     head = head->next;
-    if(head == NULL)
-        tail == NULL;
-    free(tmp);
-    return v;
+    if (head == NULL)
+        tail = NULL;
+    free(p);
+    return x;
 }
 
 void freeQueue()
 {
-    while(!queueEmpty())
+    while (!emptyQueue())
     {
-        Node* p = head;
+        Node *tmp = head;
         head = head->next;
         if(head == NULL)
-            tail == NULL;
-        free(p);
-    }
+            tail = NULL;
+        free(tmp);
+    }   
 }
 
 int main()
 {
-    head = NULL;
-    tail = NULL;
-    char cmd[10];
+    initQueue();
+    char cmd[5];
     while (1)
     {
         scanf("%s", cmd);
@@ -78,12 +83,11 @@ int main()
         }
         else if(strcmp(cmd, "POP") == 0)
         {
-            if (queueEmpty())
+            if (emptyQueue())
                 printf("NULL\n");
             else
             {
-                int v = pop();
-                printf("%d\n", v);
+                printf("%d\n", pop());
             }
         }
     }
