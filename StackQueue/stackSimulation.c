@@ -44,7 +44,7 @@ int pop()
 	return x;
 }
 
-int freeAll()
+void freeStack()
 {
 	while (!emptyStack())
 	{
@@ -55,6 +55,7 @@ int freeAll()
 }
 
 int main(){
+	initStack();
 	char cmd[5];
 	while (1)
 	{
@@ -75,6 +76,6 @@ int main(){
 				printf("%d\n", pop());
 		}
 	}
-	freeAll();
+	freeStack();
     return 0;
 }
